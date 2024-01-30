@@ -1,21 +1,18 @@
 import os
-import openai as ai
+from openai import OpenAI
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-ai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
-def ask(question: str) -> str:
-    response = ai.Completion.create(
-    model="text-davinci-003",
-    prompt=f"Human: {question}\nAI:",
-    temperature=0.9,
-    max_tokens=200,
-    top_p=1,
-    frequency_penalty=0,
-    presence_penalty=0.6,
-    stop=[" Human:", " AI:"]
+def get_ai_response(messages: List[Dict[str, str]], model= 'gpt-3.5-turbo', temperature=0.5) -> str:
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        temperature=temperature,
+        max_tokens=256
     )
     # print(response)
     return response.choices[0].text
