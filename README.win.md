@@ -1,5 +1,5 @@
 # Looky
-If you are developing on Windows, please check out the [Windows Development Guide](./README.win.md).
+If you are developing on Linux-based System, please check out the [Linux Development Guide](./README.md).
 
 ## 開發環境 Development Environment
 ```
@@ -22,8 +22,12 @@ virtualenv venv
 
 ### 啟動虛擬環境 | Activating Virutal Environment
 ```
-(Windows) $ cd venv/Scripts & activate & cd ../..
-(Linux)   $ source venv/bin/activate
+$ cd venv/Scripts & activate & cd ../..
+```
+
+### 安裝套件 | Downloading Packages
+```
+(venv) $ pip install -r "requirements.txt"
 ```
 
 ### 建立 .env 檔案 | Creating .env file
@@ -38,7 +42,7 @@ NGROK_AUTH_TOKEN=<NGROK_AUTH_TOKEN>
 ```
 
 ### 執行程式 | Running Application
+
 ```
-$ chmod +x start.sh
-$ ./start.sh
+(venv) $ python app.py
 ```

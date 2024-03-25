@@ -1,0 +1,26 @@
+{
+    "users": [
+        {
+            "_id": ObjectId,
+            "line_user_id": String,
+            "name": String,
+            "email": String,
+            "selected_model": String,
+            "temperature": Number,
+            "max_tokens": Number,
+            "usage": Number,
+            "threads": [
+                {
+                    "thread_id": String,
+                    "chat_history": [
+                        {
+                            "timestamp": Date,
+                            "role": String,
+                            "content": String
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

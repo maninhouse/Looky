@@ -1,13 +1,13 @@
 import os
-# from openai import OpenAI
-import openai as OpenAI
-
-from dotenv import load_dotenv
+from openai import OpenAI
+from typing import List, Dict
+from env_loader import get_openai_api_key
 import json
 
 load_dotenv()
 
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+
+client = OpenAI(api_key=get_openai_api_key())
 
 def get_ai_response(messages: List[Dict[str, str]], model= 'gpt-3.5-turbo', temperature=0.5) -> str:
     response = client.chat.completions.create(
@@ -22,7 +22,7 @@ def get_ai_response(messages: List[Dict[str, str]], model= 'gpt-3.5-turbo', temp
     # prompt=f'Human: {question}\nAI:',
     # temperature=0.1,
     # max_tokens=200,
-    # top_p=1,
+    # top_p=1, 
     # frequency_penalty=0,
     # presence_penalty=0.6,
     # stop=[' Human:', ' AI:']
